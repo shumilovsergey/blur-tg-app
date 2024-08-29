@@ -1,2 +1,2 @@
-# sh-tg-app
-testing telegram web app
+# template-django-tailwind
+here is my django tailwind template

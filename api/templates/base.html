@@ -1,39 +1,31 @@
 {% load static tailwind_tags %}
 {% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>{% block title %}bitstock{% endblock %}</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="image/svg+xml" href="{% static 'icon.png' %}">
-{% tailwind_css %}
+    <title>Hello World</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
-<body class="">
-    {% if request.session.auth %}
-    <div class="bg-amber-50 shadow-md flex pl-10 items-center justify-between">
-        <div class="flex">
-            <form action="{% url 'api:main' %}" method="GET">
-                <button class="hover:bg-stone-300 h-10 w-40 items-center flex justify-center duration-500 text-lg">
-                    <pre>{{request.session.name}}</pre>
-                </button>
-            </form>
-        </div>
+<body>
+    <h1>Hello, <span id="telegram-id">loading...</span>!</h1>
 
-        <form action="{% url 'api:logout' %}" method="GET">
-            <button class="hover:bg-stone-300 h-10 w-40 items-center flex justify-center duration-500 text-lg">
-                <pre>logout</pre>
-            </button>
-        </form>
-    </div>
+    <script nonce="{{ request.csp_nonce }}">
+        // Initialize the Telegram Web App
+        Telegram.WebApp.ready();
 
-    {% endif %}
+        // Get the user's Telegram ID
+        const userId = Telegram.WebApp.initDataUnsafe.user?.id;
+
+        // Display the user's Telegram ID
+        document.getElementById('telegram-id').textContent = userId ? userId : "User ID not available";
+    </script>
 
     <div class="px-10 mt-32">
     {% block content %}{% endblock %}
     </div>
-
 
 </body>
 </html>

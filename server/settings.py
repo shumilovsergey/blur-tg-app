@@ -8,6 +8,8 @@ SECRET_KEY = 'django-insecure-=9h+o7t6dv2yn=n03k*r7x7i^m@$dtkt0dbt@p4idpld#pfa5-
 
 DEBUG = True
 
+X_FRAME_OPTIONS = ''
+
 hosts = [f"https://{HOST_DNS}"]
 
 CORS_ORIGIN_ALLOW_ALL = True

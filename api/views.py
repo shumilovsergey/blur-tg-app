@@ -9,3 +9,6 @@ class Main(View):
     def get(self, request):
         return render(request, 'main.html')
     
+class Out(View):
+    def get(self, request):
+        return render(request, 'out.html')

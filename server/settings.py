@@ -6,28 +6,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-=9h+o7t6dv2yn=n03k*r7x7i^m@$dtkt0dbt@p4idpld#pfa5-'
 
-# CSP_DEFAULT_SRC = ["'self'"]
-# CSP_SCRIPT_SRC = ["'self'", "https://telegram.org", "'unsafe-inline'"]
-# CSP_STYLE_SRC = ["'self'", "https://telegram.org"]
-# CSP_IMG_SRC = ["'self'", "data:"]
-# CSP_FRAME_ANCESTORS = ["'self'", "https://web.telegram.org"]
-
-# Basic Content Security Policy
-CSP_DEFAULT_SRC = ["'self'"]
-CSP_SCRIPT_SRC = ["'self'", "https://telegram.org"]
-
-# (Optional) If you want to enforce CSP on style or other resources
-CSP_STYLE_SRC = ["'self'", "'nonce-{nonce}'"]
-CSP_IMG_SRC = ["'self'", "data:"]
-CSP_FRAME_ANCESTORS = ["'self'", "https://web.telegram.org"]
-
-# Example security settings
-# SECURE_BROWSER_XSS_FILTER = True
-# SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = ""
-
-
-
 DEBUG = True
 
 hosts = [f"https://{HOST_DNS}"]
@@ -63,11 +41,9 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'corsheaders.middleware.CorsMiddleware',
-    'csp.middleware.CSPMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'api.middleware.CSPNonceMiddleware',
 ]
 
 ROOT_URLCONF = 'server.urls'

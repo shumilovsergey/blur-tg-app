@@ -1,3 +1,4 @@
 sqlite/db.sqlite3
 server/.env
 /.env
+.DS_Store

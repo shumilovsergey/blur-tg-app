@@ -2,21 +2,29 @@
 {% block content %}
 {% load static %}
 
-<div class="flex justify-center">
+<div class="flex justify-center my-5">
   <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51]">Артисты</div>
 </div>
 
-<form method="GET" action="{% url 'api:stendup' author_id %}">
-  {% for stendup_auther in stendup_authers %}
-    <div>
-      <button type="submit" name="author_id" value="{{stendup_auther.id}}">
+<div class="h-1 w-full bg-[#3B3009]"></div>
+
+<form method="GET" action="{% url 'api:main'%}" class="mt-5">
+    <div class="flex justify-center pt-5">
+      <button type="submit">
+        <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">◀ назад</div>
+      </button>
+    </div>
+</form>
+
+<form method="GET" action="{% url 'api:stendup_filelist' id %}" class="mt-5">
+  {% for stendup_auther in stendup_authors %}
+    <div class="flex justify-center pt-5">
+      <button type="submit" name="id" value="{{stendup_auther.id}}">
         <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_auther.name}}</div>
       </button>
     </div>
   {% endfor %}
 </form>
-
-
 
 {% endblock %}
 

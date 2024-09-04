@@ -9,7 +9,15 @@ class Main(View):
     def get(self, request):
         return render(request, 'main.html')
       
-class StendupAuthorsList(View):
+class StendupAuthorList(View):
     def get(self, request):
         stendup_authors = StendupAuthors.objects.all()
         return render(request, 'stendups/authors.html', {'stendup_authors':stendup_authors})
+    
+class StendupFileList(View):
+    def get(self, request, id):
+        file_list = ''
+        
+
+
+        return render(request, 'stendups/files.html', {'file_list':file_list})

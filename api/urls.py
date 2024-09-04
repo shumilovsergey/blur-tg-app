@@ -1,12 +1,12 @@
 from django.urls import path
 from .views import Main
-from .views import Out
-from .views import StendupAuthorsList
-
+from .views import StendupAuthorList
+from .views import StendupFileList
 
 
 app_name = 'api'
 urlpatterns = [
     path('', Main.as_view(), name='main'),
-    path('stendup', StendupAuthorsList.as_view(), name='stendup')
+    path('stendup', StendupAuthorList.as_view(), name='stendup'),
+    path('stendup/<int:id>/', StendupFileList.as_view(), name='stendup_filelist')
 ]

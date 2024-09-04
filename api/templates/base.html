@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{% block title %}bitstock{% endblock %}</title>
+    <title>app</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -11,15 +11,19 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 {% tailwind_css %}
 </head>
-<body class="">
-
-    <div class="h-10 w-10 bg-yellow-600">
-        base
-    </div>
-
-    <div class="px-10 mt-32">
+<!-- <body class="bg-[#17093b]"> -->
+<!-- <body class="bg-[#7851D7]"> -->
+<!-- <body class="h-screen bg-gradient-radial from-[#7851D7] to-[#17093b]"> -->
+    <body style="
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.7)), #17093b;">
+    
+    <div class="">
     {% block content %}{% endblock %}
     </div>
 
 </body>
 </html>
+
+

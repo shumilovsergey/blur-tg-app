@@ -2,30 +2,61 @@
 {% block content %}
 {% load static %}
 
-<div class="flex justify-center my-5">
-  <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51]">Артисты</div>
+<div class="relative">
+  <div class="fixed top-0 left-0 right-0 h-20" style="
+  height: 100vh;
+  margin: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0) 80%, rgba(0, 0, 0, 0.7)), #17093b;">
+
+    <div class="flex justify-center my-5">
+      <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51]">Артисты</div>
+    </div>
+
+    <div class="h-1 w-full bg-[#3B3009]"></div>
+  </div>
+
+  <div class="">
+    <form method="POST" action="{% url 'api:stendup_filelist' %}" class="mt-5">
+      {% for stendup_author in stendup_authors %}
+        <div class="flex justify-center pt-5">
+          <button type="submit" name="stendup_author_id" value="{{stendup_author.id}}">
+            <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_author.name}}</div>
+          </button>
+        </div>
+        <div class="flex justify-center pt-5">
+          <button type="submit" name="stendup_author_id" value="{{stendup_author.id}}">
+            <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_author.name}}</div>
+          </button>
+        </div>
+        <div class="flex justify-center pt-5">
+          <button type="submit" name="stendup_author_id" value="{{stendup_author.id}}">
+            <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_author.name}}</div>
+          </button>
+        </div>
+        <div class="flex justify-center pt-5">
+          <button type="submit" name="stendup_author_id" value="{{stendup_author.id}}">
+            <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_author.name}}</div>
+          </button>
+        </div>
+      {% endfor %}
+    </form>
+  </div>
+
 </div>
 
-<div class="h-1 w-full bg-[#3B3009]"></div>
 
-<form method="GET" action="{% url 'api:main'%}" class="mt-5">
-    <div class="flex justify-center pt-5">
-      <button type="submit">
-        <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">◀ назад</div>
-      </button>
-    </div>
-</form>
 
-<form method="GET" action="{% url 'api:stendup_filelist' id %}" class="mt-5">
-  {% for stendup_auther in stendup_authors %}
-    <div class="flex justify-center pt-5">
-      <button type="submit" name="id" value="{{stendup_auther.id}}">
-        <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">{{stendup_auther.name}}</div>
-      </button>
-    </div>
-  {% endfor %}
-</form>
+
+
+
 
 {% endblock %}
 
 
+<!-- <form method="GET" action="{% url 'api:main'%}" class="mt-5">
+  <div class="flex justify-center pt-5">
+    <button type="submit">
+      <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">◀ назад</div>
+    </button>
+  </div>
+</form> -->

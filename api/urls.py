@@ -8,5 +8,5 @@ app_name = 'api'
 urlpatterns = [
     path('', Main.as_view(), name='main'),
     path('stendup', StendupAuthorList.as_view(), name='stendup'),
-    path('stendup/<int:id>/', StendupFileList.as_view(), name='stendup_filelist')
+    path('stendup/author', StendupFileList.as_view(), name='stendup_filelist')
 ]

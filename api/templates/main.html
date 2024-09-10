@@ -2,28 +2,20 @@
 {% block content %}
 {% load static %}
 
-<div class="flex justify-center mt-20">
-  <img class="h-52 w-52" src="{% static 'fire.gif' %}">
-  <div></div>
+
+<div class="left-0 right-0 backdrop-blur-md bg-white/30 rounded-sm shadow-md mt-20">
+  <div class="text-center py-7 font-thin text-xl">главное меню</div>
 </div>
 
-<form action="{% url 'api:stendup' %}">
-  <div class="flex justify-center">
-    <button type="submit">
-      <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">стендапы</div>
-    </button>
+
+<div class="justify-center content-center flex  mt-20">
+  <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
+    <div class="py-7 text-center shadow-sm text-xl font-thin">стендап</div>
+    <div class="py-7 text-center shadow-sm text-xl font-thin">подкасты</div>
+    <div class="py-7 text-center shadow-sm text-xl font-thin">книги</div>
   </div>
-</form>
+</div>
 
-<div class="flex justify-center pt-5">
-  <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">подкасты</div>
-</div>
-<div class="flex justify-center pt-5">
-  <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">книги</div>
-</div>
-<div class="flex justify-center pt-5">
-  <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">о проекте</div>
-</div>
 
 {% endblock %}
 

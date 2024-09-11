@@ -10,12 +10,32 @@
 
 <div class="justify-center content-center flex  mt-20">
   <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
-    <div class="py-7 text-center shadow-sm text-xl font-thin">стендап</div>
-    <div class="py-7 text-center shadow-sm text-xl font-thin">подкасты</div>
+    <div class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('stendup')">
+      стендап
+    </div>
+
+    <div class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('stendup')">
+      подкасты
+    </div>
+
     <div class="py-7 text-center shadow-sm text-xl font-thin">книги</div>
+    
   </div>
 </div>
 
+<script>
+  function redirect(routeName) {
+      var routes = {
+          'stendup': "{% url 'api:stendup' %}"
+      };
+
+      if (routes[routeName]) {
+          window.location.href = routes[routeName];
+      } else {
+          console.error('Route not found: ' + routeName);
+      }
+  }
+</script>
 
 {% endblock %}
 

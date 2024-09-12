@@ -2,21 +2,44 @@
 {% block content %}
 {% load static %}
 
-qq
+<div class="left-0 right-0 backdrop-blur-md bg-white/30 rounded-sm shadow-md mt-20">
+  <div onclick="redirect('main')" class="select-none absolute content-center backdrop-blur-md bg-white/10 rounded-lg shadow-md h-16 w-16 mt-3 ml-3 text-center font-thin text-xl hover:bg-white/30"><</div>
+  <div class="select-none text-center py-7 font-thin text-xl">стендап</div>
+</div>
 
+<form>
+  <div class="justify-center content-center flex  mt-20">
+    <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
+      {% for author in stendup_authors %}
+      <div onclick="handleAuthor(this.id)" id="{{author.id}}" class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20"">{{author.name}}</div>
+      {% endfor %}
+    </div>
+  </div>
+</form>
 
+<script>
+  function redirect(routeName) {
+      var routes = {
+          'main': "{% url 'api:main' %}"
+      };
 
+      if (routes[routeName]) {
+          window.location.href = routes[routeName];
+      } else {
+          console.error('Route not found: ' + routeName);
+      }
+  }
 
+  function handleAuthor(id) {
+        const clickedDiv = document.getElementById(id);
+        if (id) {
+          window.location.href = "{% url 'api:stendup_filelist' 0 %}".replace('0', id);
+        } else {
+          console.error('author not found id is ' + id);
+      }
+    }
 
-
+</script>
 
 {% endblock %}
 
-
-<!-- <form method="GET" action="{% url 'api:main'%}" class="mt-5">
-  <div class="flex justify-center pt-5">
-    <button type="submit">
-      <div class="py-3 w-60 font-bold shadow-lg border-[#3B3009] border-4 text-center bg-[#D7BB51] hover:bg-[#E2BF41]">◀ назад</div>
-    </button>
-  </div>
-</form> -->

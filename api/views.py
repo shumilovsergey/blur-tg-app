@@ -3,8 +3,6 @@ from django.shortcuts import render, redirect
 from .models import StendupAuthors
 from django.http import JsonResponse
 
-
-
 class Main(View):
     def get(self, request):
         return render(request, 'main.html')
@@ -15,9 +13,7 @@ class StendupAuthorList(View):
         return render(request, 'stendups/authors.html', {'stendup_authors':stendup_authors})
     
 class StendupFileList(View):
-    def post(self, request):
-        stendup_author_id = request['stendup_author_id']
-        print(stendup_author_id)
-
-
+    def get(self, request, id):
+        # stendup_author_id = request['stendup_author_id']
+        print(id)
         return render(request, 'stendups/files.html')

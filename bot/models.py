@@ -16,6 +16,8 @@ class Message:
     video : str = None
     document : str = None
     callback : str = None
+    audio : str = None
+    title : str = None
     error : bool = field(init=False)
 
     def __post_init__(self):

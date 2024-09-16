@@ -2,7 +2,6 @@
 {% block content %}
 {% load static %}
 
-
 <div class="left-0 right-0 backdrop-blur-md bg-white/30 rounded-sm shadow-md mt-20">
   <div class="select-none text-center py-7 font-thin text-xl">главное меню</div>
 </div>
@@ -13,26 +12,31 @@
       стендап
     </div>
 
-    <div class="select-none py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('stendup')">
+    <div class="select-none py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('podcast')">
       подкасты
     </div>
 
-    <div class="select-none py-7 text-center shadow-sm text-xl font-thin">книги</div>
+    <div class="select-none py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('book')">
+      книги
+    </div>
     
   </div>
 </div>
 
 <script>
   function redirect(routeName) {
-      var routes = {
-          'stendup': "{% url 'api:stendup' %}"
-      };
+    var routes = {
+        'stendup': "{% url 'api:stendup' %}",
+        'podcast': "{% url 'api:podcast' %}",
+        'book': "{% url 'api:book' %}"
+    };
 
-      if (routes[routeName]) {
-          window.location.href = routes[routeName];
-      } else {
-          console.error('Route not found: ' + routeName);
-      }
+    if (routes[routeName]) {
+        window.location.href = routes[routeName];
+    } else {
+        console.error('Route not found: ' + routeName);
+    }
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
   }
 </script>
 

@@ -7,27 +7,21 @@
   <div class="select-none text-center py-7 font-thin text-xl">стендап</div>
 </div>
 
-<form>
-  <div class="justify-center content-center flex  mt-20">
-    <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
-      {% for author in stendup_authors %}
-      <div onclick="handleAuthor(this.id)" id="{{author.id}}" class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20"">{{author.name}}</div>
-      {% endfor %}
-    </div>
+<div class="justify-center content-center flex  mt-20">
+  <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
+    {% for author in stendup_authors %}
+    <div onclick="handleAuthor(this.id)" id="{{author.id}}" class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20"">{{author.name}}</div>
+    {% endfor %}
   </div>
-</form>
+</div>
 
 <script>
   function redirect(routeName) {
-      var routes = {
-          'main': "{% url 'api:main' %}"
-      };
-
-      if (routes[routeName]) {
-          window.location.href = routes[routeName];
-      } else {
-          console.error('Route not found: ' + routeName);
-      }
+    var routes = {
+        'main': "{% url 'api:main' %}"
+    };
+    window.location.href = routes[routeName];
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
   }
 
   function handleAuthor(id) {
@@ -37,8 +31,8 @@
         } else {
           console.error('author not found id is ' + id);
       }
+      Telegram.WebApp.HapticFeedback.impactOccurred('medium');
     }
-
 </script>
 
 {% endblock %}

@@ -2,5 +2,37 @@
 {% block content %}
 {% load static %}
 
+<div class="left-0 right-0 backdrop-blur-md bg-white/30 rounded-sm shadow-md mt-20">
+  <div onclick="redirect('main')" class="select-none absolute content-center backdrop-blur-md bg-white/10 rounded-lg shadow-md h-16 w-16 mt-3 ml-3 text-center font-thin text-xl hover:bg-white/30"><</div>
+  <div class="select-none text-center py-7 font-thin text-xl">{{book.name}}</div>
+</div>
+
+<div class="justify-center content-center flex  mt-20">
+    <div class="backdrop-blur-md bg-white/30 rounded-lg shadow-md w-80">
+        {% for file in file_list %}
+        <div onclick="handleFile(this.id)" id="{{file.id}}" class="py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20"">{{file.name}}</div>
+        {% endfor %}
+    </div>
+</div>
+
+<script>
+  function redirect(routeName) {
+    var routes = {
+        'main': "{% url 'api:book' %}"
+    };
+    window.location.href = routes[routeName];
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+  }
+
+  function handleFile(fileId) {
+    const userData = Telegram.WebApp.initDataUnsafe;
+    const chatId = userData.user.id
+    url = `{% url 'api:book_file'%}?file_id=${fileId}&chat_id=${chatId}`;
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+    fetch(url, {method: 'GET'})
+    window.Telegram.WebApp.close();
+  }
+</script>
 
 {% endblock %}
+

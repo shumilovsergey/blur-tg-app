@@ -20,7 +20,7 @@ def add_button():
     payload = {
         "menu_button": {
             "type": "web_app",
-            "text": "Open My Web App",
+            "text": "запустить",
             "web_app": {
                 "url": WEB_APP_URL
             }
@@ -43,6 +43,6 @@ def set_webhook():
     return
 
 
-add_button()
+# add_button()
 
 # set_webhook()

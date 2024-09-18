@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<div class="left-0 right-0 backdrop-blur-md bg-white/30 rounded-sm shadow-md mt-20">
+  <div onclick="redirect('main')" class="select-none absolute content-center backdrop-blur-md bg-white/10 rounded-lg shadow-md h-16 w-16 mt-3 ml-3 text-center font-thin text-xl hover:bg-white/30"><</div>
+  <div class="select-none text-center py-7 font-thin text-xl">о проекте</div>
+</div>
+
+<div class="justify-center content-center flex  mt-20">
+  <div class="font-thin text-xl backdrop-blur-md bg-white/30 rounded-lg shadow-md w-96">
+    <div class="py-7 pl-10">
+      <div >этот проект создан для демонстрации концепта хранения и получения файлов из телеграм</div>
+    </div>
+    
+    <div class="py-7 pl-10 shadow-sm">
+      <div>для вопросов и предложений:</div>
+    </div>
+
+    <div onclick="telegram()" class="py-7 pl-10 shadow-sm hover:bg-white/20">
+      <div>написать ></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function redirect(routeName) {
+    var routes = {
+        'main': "{% url 'api:main' %}"
+    };
+    window.location.href = routes[routeName];
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+  }
+
+  function telegram() {
+    window.location.href = "https://t.me/sergey_showmelove"
+    Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+  }
+
+</script>
+
+{% endblock %}
+

@@ -1,5 +1,6 @@
 from django.urls import path
 from .views import Main
+from .views import About
 from .views import StendupAuthorList
 from .views import StendupFileList
 from .views import StendupFile
@@ -16,6 +17,7 @@ from .views import BookFile
 app_name = 'api'
 urlpatterns = [
     path('', Main.as_view(), name='main'),
+    path('about', About.as_view(), name='about'),
     #stendups
     path('stendup', StendupAuthorList.as_view(), name='stendup'),
     path('stendup/author/<int:id>', StendupFileList.as_view(), name='stendup_filelist'),

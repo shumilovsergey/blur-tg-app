@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<body>
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        window.Telegram.WebApp.ready();
+        const fileId = "{{ file_id|escapejs }}"; 
+        const userData = Telegram.WebApp.initDataUnsafe;
+        const chatId = userData.user.id
+        url = `{% url 'api:book_file'%}?file_id=${fileId}&chat_id=${chatId}`;
+        Telegram.WebApp.HapticFeedback.impactOccurred('medium');
+        fetch(url, {method: 'GET'})
+        window.Telegram.WebApp.close();
+    });
+
+</script>
+
+{% endblock %}

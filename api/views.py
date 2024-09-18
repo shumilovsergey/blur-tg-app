@@ -19,6 +19,10 @@ from server.const import TOKEN_TG
 class Main(View):
     def get(self, request):
         return render(request, 'main.html')
+
+class About(View):
+    def get(self, request):
+        return render(request, 'about.html')
       
 # stendup
 class StendupAuthorList(View):
@@ -106,9 +110,11 @@ class BookFileList(View):
             book = BookBooks.objects.get(id=id)
             file_list = BookFiles.objects.filter(book=book)
 
-            # if BookFiles.objects.filter(book=book).count == 1:
-            #     book_file = file_list[0]
-            #     tg_id = book_file.tg_id
+            if BookFiles.objects.filter(book=book).count() == 1:
+                book_file = file_list[0]
+                file_id = book_file.id
+                return render(request, 'books/one_file_book.html', {'file_id':file_id})
+            
             return render(request, 'books/files.html', {'book':book, 'file_list':file_list})
         
 class BookFile(View):

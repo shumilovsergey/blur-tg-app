@@ -19,6 +19,10 @@
     <div class="select-none py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('book')">
       книги
     </div>
+  
+    <div class="select-none py-7 text-center shadow-sm text-xl font-thin hover:bg-white/20" onclick="redirect('about')">
+      о проекте
+    </div>
     
   </div>
 </div>
@@ -28,7 +32,8 @@
     var routes = {
         'stendup': "{% url 'api:stendup' %}",
         'podcast': "{% url 'api:podcast' %}",
-        'book': "{% url 'api:book' %}"
+        'book': "{% url 'api:book' %}",
+        'about': "{% url 'api:about' %}"
     };
 
     if (routes[routeName]) {

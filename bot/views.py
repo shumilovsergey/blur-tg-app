@@ -11,7 +11,8 @@ def getMessage(request):
         text = message.title + "    //_//   " + message.audio
         message.sendMessage(text=text)
 
-    message.deleteMessage()
+    if message.text != "/start":
+        message.deleteMessage()
     return Response("ok", status=200)
 
 

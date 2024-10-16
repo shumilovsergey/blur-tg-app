@@ -10,6 +10,8 @@ from .models import BookAuthors
 from .models import BookBooks
 from .models import BookFiles
 
+from django.db.models import Max
+
 
 from django.http import JsonResponse
 from rest_framework.response import Response
@@ -59,7 +61,7 @@ class StendupFile(View):
 #podcast
 class PodcastAuthorList(View):
     def get(self, request):
-        authors = PodcastAuthors.objects.all()
+        authors = PodcastAuthors.objects.annotate(latest_file_update=Max('podcast_files__updated')).order_by('-latest_file_update')
         return render(request, 'podcasts/authors.html', {'authors':authors})
     
 class PodcastFileList(View):
@@ -90,7 +92,7 @@ class PodcastFile(View):
 #books
 class BookAuthorList(View):
     def get(self, request):
-        authors = BookAuthors.objects.all()
+        authors = BookAuthors.objects.annotate(latest_book_update=Max('books__updated')).order_by('-latest_book_update')
         return render(request, 'books/authors.html', {'authors':authors})
 
 class BookBookList(View):

@@ -36,9 +36,10 @@ class PodcastAuthors(models.Model):
 
 class PodcastFiles(models.Model):
     name = models.CharField(max_length=56)
-    author_name = models.ForeignKey(PodcastAuthors, on_delete=models.PROTECT)
+    author_name = models.ForeignKey(PodcastAuthors, on_delete=models.PROTECT, related_name='podcast_files')
     tg_id = models.CharField(max_length=256, unique=True)
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True) 
     def __str__(self):
         return f"{self.author_name} __ {self.name}"
     class Meta:
@@ -60,7 +61,8 @@ class BookAuthors(models.Model):
 class BookBooks(models.Model):
     name = models.CharField(max_length=56)
     created = models.DateTimeField(auto_now_add=True)
-    author = models.ForeignKey(BookAuthors, on_delete=models.PROTECT)
+    author = models.ForeignKey(BookAuthors, on_delete=models.PROTECT, related_name='books')
+    updated = models.DateTimeField(auto_now=True) 
     def __str__(self):
         return f"{self.author} __ {self.name}"
     class Meta:
